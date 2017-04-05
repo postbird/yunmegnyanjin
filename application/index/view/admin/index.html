@@ -1,0 +1,52 @@
+{extend name="base"}
+{block name="title"}轮播图编辑{/block}
+{block name="index-nav"}am-active{/block}
+
+{block name="content"}
+<div class="am-container">
+    <blockquote>
+        <p class="am-text">轮播图是云梦盐津网站首页的滚动轮播图,需要编辑的内容包括 : </p>
+        <ul class=" ">
+            <li>新闻标题 - 必填</li>
+            <li>新闻链接 - 必填（新闻最终查看的地址，可以是微信的链接）</li>
+            <li>新闻图片 - 推荐大小为(640x430),图片上传到第三方（如七牛云）平台，提高速度</li>
+        </ul>
+    </blockquote>
+    <div class="am-panel am-panel-default">
+            <div class="am-panel-hd">当前轮播图</div>
+        <form action="{:url('/admin/bannerupdate')}" method="post" class="am-form am-form-horizontal">
+             <div class="am-panel-bd">
+                {volist name="banner" id="b"}
+                <div class="am-form-group " >
+                    <label for="" class="am-u-md-1 am-u-sm-12 am-form-label">标题</label>
+                    <div class="am-u-md-11  am-u-sm-12">
+                        <input type="text" value="{$b.title}" name="title[]" >
+                    </div>
+                </div>
+                <div class="am-form-group " >
+                    <label for="" class="am-u-md-1 am-u-sm-12 am-form-label">链接</label>
+                    <div class="am-u-md-11 ">
+                        <input type="text" value="{$b.url}" name="url[]" >
+                    </div>
+                </div>
+                <div class="am-form-group " >
+                    <label for="" class="am-u-md-1 am-u-sm-12 am-form-label">图片</label>
+                    <div class="am-u-md-11 ">
+                        <input type="text" value="{$b.img}" name="img[]" >
+                        <input type="hidden" value="{$b.id}" name="imgd[]">
+                    </div>
+                </div>
+
+                <hr>
+                {/volist}
+            </div>
+            <div class="am-panel-footer am-text-right">
+                <button class="am-btn am-btn-default " type="submit"><span class="am-icon-check"></span> 保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+
+{/extend}
+

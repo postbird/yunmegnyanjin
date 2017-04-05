@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录 - __TITLE__</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" >
+</head>
+<body>
+<div class="am-container">
+    <div class="am-u-lg-8  am-u-sm-12 am-u-sm-centered login-panel" style="">
+        <div class="header am-text-center" style="padding-top: 50px;">
+            <div class="am-g">
+                <h2 class="am-animation-shake am-animation-delay-1">用户登录</h2>
+            </div>
+            <hr />
+        </div>
+        <div class="am-u-lg-12 am-u-md-8 am-u-sm-12 am-u-sm-centered">
+            <form class="am-form am-form-horizontal" method="post" action="/login/work.html">
+                <div class="am-form-group">
+                    <label for="doc-ipt-3" class="am-u-md-2 am-u-sm-4 am-form-label">用户名</label>
+                    <div class="am-u-md-10 am-u-sm-8">
+                        <input type="text"  required name="name" id="doc-ipt-3" placeholder="输入登录的用户名">
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="doc-ipt-pwd-2" class="am-u-md-2 am-u-sm-4 am-form-label">密码</label>
+                    <div class="am-u-md-10 am-u-sm-8">
+                        <input type="password"  required name="password" id="doc-ipt-pwd-2" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <label for="doc-ipt-pwd-3" class="am-u-md-2 am-u-sm-4 am-form-label">验证码</label>
+                    <div class="am-u-md-6 am-u-sm-8">
+                        <input type="text" required name="captcha" id="doc-ipt-pwd-3" placeholder="点击图片切换验证码">
+                    </div>
+                    <div class="am-u-sm-4 am-show-sm"></div>
+                    <div class="am-u-md-3 am-u-sm-8">
+                        <img src=""  alt="captcha" onclick="randomVerify();" style="cursor: pointer;" class="verify-image">
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                        {:token()}
+                        <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fr">
+                    </div>
+                </div>
+            </form>
+            <hr>
+            <p>Powered by <a href="http://www.ptbird.cn">Postbird - http://www.ptbird.cn.</a></p>
+        </div>
+    </div>
+</div>
+</body>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js" ></script>
+<script>
+    $(document).ready(function(){
+        randomVerify();
+    });
+    function randomVerify(){
+        var src='{:captcha_src()}?d='+Math.random();
+        $(".verify-image").attr('src',src);
+    }
+</script>
+</html>

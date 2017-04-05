@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b4328d07-9b14-4ec8-aa82-18e8f4c50f5a" name="yanjin" url="http://123.207.14.142">
+        <fileTransfer host="123.207.14.142" port="21" rootFolder="/yanjin.ptbird.cn">
+          <advancedOptions>
+            <advancedOptions controlEncoding="UTF-8" dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

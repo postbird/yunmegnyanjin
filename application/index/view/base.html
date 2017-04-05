@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{block name="title"}后台首页{/block} - __TITLE__</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" >
+    <style>
+        .top-info-alert-box{
+            position: relative;
+            top:0;
+            left:0;
+            right:0;
+        }
+    </style>
+</head>
+<body>
+<header class="am-topbar">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="javascript:;">云梦盐津党建中心</a>
+        </h1>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li class="{block name='index-nav'}{/block}"><a href="{:url('/admin')}">轮播图</a></li>
+                <li class="{block name='project-nav'}{/block}"><a href="#">项目</a></li>
+            </ul>
+            <div class="am-topbar-right">
+                <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+                    <button class="am-btn am-btn-default am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle>管理员 <span class="am-icon-caret-down"></span></button>
+                    <ul class="am-dropdown-content">
+                        <li><a href="{:url('/admin/edit')}">编辑信息</a></li>
+                        <li><a href="{:url('/logout')}">退出登陆</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="am-container">
+    <div>
+        {if condition="$Think.session.msg neq '' "}
+            {if condition="$Think.session.error eq 0 "}
+                <div class="am-alert am-animation-slide-top top-info-alert-box" data-am-alert>
+                    <button type="button" class="am-close">&times;</button>
+                    <p> {$Think.session.msg}</p>
+                </div>
+            {/if}
+            {if condition="$Think.session.error eq 1 "}
+                <div class="am-alert am-animation-slide-top top-info-alert-box am-alert-danger" data-am-alert>
+                    <button type="button" class="am-close">&times;</button>
+                    <p> {$Think.session.msg}</p>
+                </div>
+            {/if}
+        {/if}
+    </div>
+</div>
+{block name="content"}{/block}
+<footer class="am-footer">
+    <hr>
+    <span>Powered by <a href="http://www.ptbird.cn" target="_blank">Postbird - http://www.ptbird.cn</a></span>
+</footer>
+</body>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js" ></script>
+</html>
